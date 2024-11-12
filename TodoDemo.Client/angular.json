@@ -44,7 +44,6 @@
               "src/theme.less",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "./node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css",
-              "./node_modules/jqwidgets-ng/jqwidgets/styles/jqx.dark.css",
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
