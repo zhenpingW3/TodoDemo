@@ -1,4 +1,223 @@
-<app-nav-menu></app-nav-menu>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://onlinealm.moodysanalytics.com/content/images/alm-logo.svg" alt="logo">
+        <h1>OnlineALM™</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="welcome">Home</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="nav-menu">Menu</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="jqxgrid-demo">JqxGrid</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="fetch-data">Fetch Data</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="health-check">Health Check</a>
+          </li>
+
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="MARKET" nzIcon="project">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Interest Rates</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>FTP Interest Rates</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Market Structure</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Index Transition Matrix</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>House Price Index</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Historical Daily Rates</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Rate Analysis</a>
+          </li>
+          <li nz-submenu nzOpen nzTitle="Bloomberg" nzIcon="fund">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                Data License
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                CUSIP Mnemonics
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                Market Data Mnemonics
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                Index Mapping
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="CURRENT POSITION" nzIcon="global">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Data Import</a>
+          </li>
+          <li nz-submenu nzOpen nzTitle="Data Tool" nzIcon="apartment">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                File Layout
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                Mapping Group
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                Upload Setting
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                Import Setting
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                Template List
+              </li>
+            </ul>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Data Balancing</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Instrument Query</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Account Explorer</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Portfolio Explorer</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="ASSUMPTIONS" nzIcon="apartment">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Credit Table</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Prepayment/Decay Tables
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Rate Response Tables
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Forecast Delta Matrix
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Forward Rate Matrix
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            FX Rate Matrix
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Yield Curve Matrix
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Scenario Builder
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Economic Value
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Generic Instruments
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Non-Maturity Instruments
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Manual Results
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Student Loans
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            NI Strategy
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Account Projection
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Optimizer Settings
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            Instrument Type
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="TRADING" nzIcon="api">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>BondSwap</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            BondSwap Optimizer
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            BondSwap Impact
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            BondSwap Policy Limits
+          </li>
+        </ul>
+      <li nz-submenu nzOpen nzTitle="REPORTING SETUP" nzIcon="bars">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Gap Schedule</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="PROCESS & REPORT" nzIcon="build">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>CAP Analysis</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="UTILITIES" nzIcon="appstore">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Result Manager</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <span class="trigger"
+                nz-icon
+                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
