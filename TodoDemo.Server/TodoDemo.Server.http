@@ -1,6 +1,6 @@
-@TodoDemo.Server_HostAddress = http://localhost:40080
+@TodoDemo.Server_HostAddress = https://localhost:44310
 
-GET {{TodoDemo.Server_HostAddress}}/weatherforecast/
+GET {{TodoDemo.Server_HostAddress}}/api/weatherforecast/
 Accept: application/json
 
 ###

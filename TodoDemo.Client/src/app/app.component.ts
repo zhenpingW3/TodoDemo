@@ -29,7 +29,7 @@ export class AppComponent {
   }
 
   getForecasts() {
-    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe(
+    this.http.get<WeatherForecast[]>('/api/weatherforecast').subscribe(
       (result) => {
         this.forecasts = result;
       },

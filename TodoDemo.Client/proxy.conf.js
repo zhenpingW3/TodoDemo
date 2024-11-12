@@ -3,7 +3,7 @@ const { env } = require('process');
 const PROXY_CONFIG = [
   {
     context: [
-      "/weatherforecast",
+      "/api",
     ],
     target: 'https://localhost:44310',
     changeOrigin: true,
