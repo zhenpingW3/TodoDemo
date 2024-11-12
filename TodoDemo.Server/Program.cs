@@ -18,6 +18,11 @@ namespace TodoDemo.Server
         });
       });
 
+      builder.Services.AddHealthChecks()
+        .AddCheck("ICMP_01", new ICMPHealthCheck("https://onlinececl.moodysanalytics.com", 200))
+        .AddCheck("ICMP_02", new ICMPHealthCheck("www.google.com", 200))
+        .AddCheck("ICMP_03", new ICMPHealthCheck("https://qa.onlinealm.moodysanalytics.net/", 200));
+
       builder.Services.AddControllers();
       // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
       builder.Services.AddEndpointsApiExplorer();
@@ -38,6 +43,7 @@ namespace TodoDemo.Server
 
       app.UseAuthorization();
 
+      app.UseHealthChecks(new PathString("/api/health"),new CustomHealthCheckOptions());
 
       app.MapControllers();
 
