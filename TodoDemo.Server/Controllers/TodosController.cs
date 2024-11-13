@@ -12,8 +12,8 @@ namespace TodoDemo.Server.Controllers
     // 模拟数据库：简单的内存数据存储
     private static List<Todo> Todos = new List<Todo>
         {
-            new Todo { Id = 1, Title = "Learn ASP.NET Core", Description = "Study ASP.NET Core to build web applications" },
-            new Todo { Id = 2, Title = "Create Todo API", Description = "Develop a Todo API using ASP.NET Core" }
+            new Todo { Id = 1, Title = "Learn ASP.NET Core", Description = "Study ASP.NET Core to build web applications", Completed=false },
+            new Todo { Id = 2, Title = "Create Todo API", Description = "Develop a Todo API using ASP.NET Core", Completed=true}
         };
 
     // GET: api/todo
@@ -52,14 +52,17 @@ namespace TodoDemo.Server.Controllers
       var existingTodo = Todos.FirstOrDefault(t => t.Id == id);
       if (existingTodo == null)
       {
-        return NotFound(); // 返回 404 状态码
+        // 返回 404 状态码
+        return NotFound();
       }
 
       // 更新现有 Todo 的内容
       existingTodo.Title = updatedTodo.Title;
       existingTodo.Description = updatedTodo.Description;
+      existingTodo.Completed = updatedTodo.Completed;
 
-      return NoContent(); // 返回 204 状态码，表示成功但没有内容返回
+      // 返回 204 状态码，表示成功但没有内容返回
+      return NoContent();
     }
 
     // DELETE: api/todo/5

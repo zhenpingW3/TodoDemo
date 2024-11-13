@@ -15,7 +15,7 @@
                 <ul nz-list-item-actions>
 
                   <nz-list-item-action>
-                    <nz-switch [(ngModel)]="todo.completed" (click)="changeStatus(todo)" nz-tooltip nzTooltipTitle="Change Todo Status">
+                    <nz-switch [(ngModel)]="todo.completed" (ngModelChange)="changeStatus(todo)" nz-tooltip nzTooltipTitle="Change Todo Status">
                       
                     </nz-switch>
                   </nz-list-item-action>
