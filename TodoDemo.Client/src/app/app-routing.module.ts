@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { HealthCheckComponent } from './health-check/health-check.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/welcome' },
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'jqxgrid-demo', component: HomeComponent },
   { path: 'fetch-data', component: FetchDataComponent },
   { path: 'health-check', component: HealthCheckComponent },
-  
+  { path: 'todo-list', component: TodoListComponent },
 ];
 
 @NgModule({
