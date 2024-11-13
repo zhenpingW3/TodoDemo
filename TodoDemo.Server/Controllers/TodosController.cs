@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TodoDemo.Server.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -8,61 +7,73 @@ namespace TodoDemo.Server.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class TodosController : ControllerBase
+  public class TodoController : ControllerBase
   {
-    List<Todo> todoList;
+    // 模拟数据库：简单的内存数据存储
+    private static List<Todo> Todos = new List<Todo>
+        {
+            new Todo { Id = 1, Title = "Learn ASP.NET Core", Description = "Study ASP.NET Core to build web applications" },
+            new Todo { Id = 2, Title = "Create Todo API", Description = "Develop a Todo API using ASP.NET Core" }
+        };
 
-    public TodosController() : base()
-    {
-      this.todoList = new List<Todo>() {
-      new Todo(){ Id=1, Title="Title1", Description="Description1" },
-      new Todo(){ Id=2, Title="Title2", Description="Description2" },
-      new Todo(){ Id=3, Title="Title3", Description="Description3" }
-      };
-    }
-
-    // GET: api/<TodoController>
+    // GET: api/todo
     [HttpGet]
-    public async Task<IEnumerable<Todo>> Get()
+    public ActionResult<IEnumerable<Todo>> GetTodos()
     {
-      return await Task.FromResult(this.todoList);
+      return Ok(Todos);
     }
 
-    // GET api/<TodoController>/5
+    // GET: api/todo/5
     [HttpGet("{id}")]
-    public async Task<Todo> Get(int id)
+    public ActionResult<Todo> GetTodoById(int id)
     {
-      return await Task.FromResult(this.todoList.First(x => x.Id == id));
+      var todo = Todos.FirstOrDefault(t => t.Id == id);
+      if (todo == null)
+      {
+        return NotFound(); // 返回 404 状态码
+      }
+      return Ok(todo);
     }
 
-    // POST api/<TodoController>
+    // POST: api/todo
     [HttpPost]
-    public ActionResult Post(int id, Todo todo)
+    public ActionResult<Todo> CreateTodo(Todo todo)
     {
-      if (id != todo.Id)
+      // 给新Todo一个唯一的 Id
+      todo.Id = Todos.Max(t => t.Id) + 1;
+      Todos.Add(todo);
+      return CreatedAtAction(nameof(GetTodoById), new { id = todo.Id }, todo);
+    }
+
+    // PUT: api/todo/5
+    [HttpPut("{id}")]
+    public IActionResult UpdateTodo(int id, Todo updatedTodo)
+    {
+      var existingTodo = Todos.FirstOrDefault(t => t.Id == id);
+      if (existingTodo == null)
       {
-        return BadRequest();
+        return NotFound(); // 返回 404 状态码
       }
 
-      var update = this.todoList.Find(x => x.Id == id);
-      if (update == null) return NotFound();
+      // 更新现有 Todo 的内容
+      existingTodo.Title = updatedTodo.Title;
+      existingTodo.Description = updatedTodo.Description;
 
-      update.Title = todo.Title;
-      update.Description = todo.Description;
-
-      return Ok(update);
+      return NoContent(); // 返回 204 状态码，表示成功但没有内容返回
     }
 
-    // DELETE api/<TodoController>/5
+    // DELETE: api/todo/5
     [HttpDelete("{id}")]
-    public Task<IActionResult> Delete(int id)
+    public IActionResult DeleteTodo(int id)
     {
-      var todo = this.todoList.Find(x => x.Id == id);
-      if (todo == null) return Task.FromResult<IActionResult>(NotFound());
+      var todo = Todos.FirstOrDefault(t => t.Id == id);
+      if (todo == null)
+      {
+        return NotFound(); // 返回 404 状态码
+      }
 
-      this.todoList.Remove(todo);
-
-      return Task.FromResult<IActionResult>(NoContent());
+      Todos.Remove(todo);
+      return NoContent(); // 返回 204 状态码，表示删除成功但没有内容返回
     }
   }
 }

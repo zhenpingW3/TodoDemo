@@ -34,6 +34,7 @@ export class TodoListComponent{
   }
 
   deleteTodo(todo: Todo) {
+
     this.todoListService.delete(todo.id)
       .subscribe(result => {
         this.todos$ = this.todoListService.findAll();

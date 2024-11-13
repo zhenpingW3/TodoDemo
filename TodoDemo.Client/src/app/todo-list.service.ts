@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TodoListService {
 
-  private resourceUrl = "https://localhost:44310/api/todos";
+  private resourceUrl = "https://localhost:44310";
 
   constructor(private http: HttpClient) {
   }
@@ -16,24 +16,24 @@ export class TodoListService {
   create(todo: Todo): Observable<Todo> {
     //在Angular中，方法返回的Observable是一种用于处理异步数据流的对象。Observable是ReactiveX（RxJS）库的核心之一，Angular使用它来处理许多异步操作，尤其是HTTP请求、事件流、用户输入等情况
     const copy = this.convert(todo);
-    return this.http.post<Todo>(this.resourceUrl, copy);
+    return this.http.post<Todo>(`${this.resourceUrl}/api/todo`, copy);
   }
 
   update(todo: Todo): Observable<Todo> {
     const copy = this.convert(todo);
-    return this.http.put<Todo>(`${this.resourceUrl}/${copy.id}`, copy);
+    return this.http.put<Todo>(`${this.resourceUrl}/api/todo/${copy.id}`, copy);//`${this.resourceUrl}/api/todos/UpdateTodo/${copy.id}`
   }
 
   find(id: number): Observable<Todo> {
-    return this.http.get<Todo>(`${this.resourceUrl}/${id}`);
+    return this.http.get<Todo>(`${this.resourceUrl}/api/todo/${id}`);
   }
 
   findAll(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.resourceUrl);
+    return this.http.get<Todo[]>(`${this.resourceUrl}/api/todo`);
   }
 
   delete(id: number | undefined): Observable<HttpResponse<any>> {
-    return this.http.delete<any>(`${this.resourceUrl}/${id}`);
+    return this.http.delete<any>(`${this.resourceUrl}/api/todo/${id}`);
   }
 
   private convert(todo: Todo): Todo {

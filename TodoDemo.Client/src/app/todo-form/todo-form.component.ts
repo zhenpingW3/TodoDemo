@@ -15,7 +15,7 @@ export class TodoFormComponent implements OnInit {
 
   validateForm!: FormGroup;
 
-  submitForm(value: { title: string, completed: boolean }) {
+  submitForm(value: { title: string, completed: boolean, description:string }) {
     for (const key in this.validateForm.controls) {
       if (this.validateForm.controls.hasOwnProperty(key)) {
         this.validateForm.controls[key].markAsDirty();
@@ -23,8 +23,10 @@ export class TodoFormComponent implements OnInit {
       }
     }
     value.completed = false;
+    value.description = "";
 
     this.todoListService.create(value).subscribe(result => {
+
       this.nzMessageService.info('Todo created');
       this.refresh();
     });

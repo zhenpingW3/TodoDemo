@@ -8,6 +8,7 @@
           <nz-list nzItemLayout="horizontal">
             <nz-list-item *ngFor="let todo of todos$ | async">
               <ng-container>
+
                 <nz-tag [nzColor]="'cyan'">
                   {{todo.title}}
                 </nz-tag>
@@ -20,7 +21,7 @@
                   </nz-list-item-action>
 
                   <nz-list-item-action>
-                    <button nz-button nzType="primary" nzDanger nz-popconfirm nzPopconfirmTitle="Are you sure you want to delete" nzPopconfirmPlacement="top" (nzOnConfirm)='deleteTodo(todo)' (nzOnCancel)="cancel()">X</button>  
+                    <button nz-button nzType="primary" nzDanger nz-popconfirm nzPopconfirmTitle="Are you sure you want to delete" nzPopconfirmPlacement="top" (nzOnConfirm)='deleteTodo(todo)' (nzOnCancel)="cancel()">Delete</button>  
                   </nz-list-item-action>
                 </ul>
               </ng-container>
