@@ -10,9 +10,11 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HealthCheckComponent } from './health-check/health-check.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from "@angular/material/icon"
 import { MatToolbarModule } from "@angular/material/toolbar"
+
 import { jqxGridModule } from 'jqwidgets-ng/jqxgrid';
 import { IconsProviderModule } from './icons-provider.module';
 
@@ -26,6 +28,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 
@@ -56,11 +59,14 @@ registerLocaleData(en);
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+
     jqxGridModule,
     IconsProviderModule,
+
     NzLayoutModule,
     NzMenuModule,
     NzGridModule,
@@ -71,6 +77,7 @@ registerLocaleData(en);
     NzMessageModule,
     NzListModule,
     NzSwitchModule,
+    NzTabsModule,
 
     FormsModule,
     ReactiveFormsModule
